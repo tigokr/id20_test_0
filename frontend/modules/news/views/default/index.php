@@ -1,9 +1,26 @@
 <?php
 /* @var $this yii\web\View */
-?>
-<h1>default/index</h1>
+use yii\widgets\ListView;
+use yii\data\ActiveDataProvider;
 
-<p>
-    You may change the content of this page by modifying
-    the file <code><?= __FILE__; ?></code>.
-</p>
+$dataProvider = new ActiveDataProvider([
+    'query' => \common\models\News::find(),
+    'pagination' => [
+        'pageSize' => 5,
+    ],
+]);
+
+$this->title = 'News';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+
+<div class="col-lg-3">
+    <?= frontend\modules\news\widgets\filters\Filters::widget() ?>
+</div>
+
+<div class="col-lg-9">
+    <?=ListView::widget([
+        'dataProvider' => $dataProvider,
+        'itemView' => '_news',
+    ]); ?>
+</div>

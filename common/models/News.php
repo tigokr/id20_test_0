@@ -49,4 +49,16 @@ class News extends \yii\db\ActiveRecord
             'subject_id' => 'Subject ID',
         ];
     }
+
+    public function getSubject(){
+        return $this->hasOne(Subject::className(), ['id'=>'subject_id']);
+    }
+
+    public function afterFind(){
+        $this->publicated_at = date('Y-m-d H:i:s', $this->publicated_at);
+    }
+
+    public function beforeSave(){
+        $this->publicated_at = strtotime($this->publicated_at);
+    }
 }

@@ -26,10 +26,22 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'publicated_at',
+            [
+                'class'=>'yii\grid\DataColumn',
+                'attribute'=>'publicated_at',
+//                'filter'=>(\kartik\widgets\DateTimePicker::widget(['name'=>basename(\common\models\NewsSearch::className()).'[publicated_at]'])),
+
+            ],
             'title:ntext',
             'text:ntext',
-            'subject_id',
+            [
+                'class'=>'yii\grid\DataColumn',
+                'attribute'=>'subject_id',
+                'value'=>function ($model){
+                    return $model->subject?$model->subject->title:null;
+                },
+                'filter'=>\yii\helpers\ArrayHelper::map(\common\models\Subject::find()->all(), 'id', 'title'),
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

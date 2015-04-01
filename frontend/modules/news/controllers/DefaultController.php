@@ -2,6 +2,9 @@
 
 namespace frontend\modules\news\controllers;
 
+use common\models\News;
+use yii\web\HttpException;
+
 class DefaultController extends \yii\web\Controller
 {
     public function actionIndex()
@@ -9,9 +12,14 @@ class DefaultController extends \yii\web\Controller
         return $this->render('index');
     }
 
-    public function actionView()
+    public function actionView($id)
     {
-        return $this->render('view');
+        $model = News::findOne((int)$id);
+
+        if(empty($model))
+            throw new HttpException(404, 'Page not found. ');
+
+        return $this->render('view', ['model'=>$model]);
     }
 
 }
