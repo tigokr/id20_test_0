@@ -1,52 +1,63 @@
-Yii 2 Advanced Application Template
-===================================
+# id20_test_0
 
-Yii 2 Advanced Application Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.
+Реализовать данную задачу с использованием Yii2 framework, advanced.
 
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
+Написать модуль редактирования и вывода новостей
 
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
 
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-advanced/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-advanced/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-advanced.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-advanced)
+Модуль создания и редактирования новостей (модуль для администратора)
 
-DIRECTORY STRUCTURE
--------------------
+Требования:
+- Вывод всех новостей с сортировкой по дате(последние сверху)
+- Создание и редактирование новостей
+- У каждой новости есть поля: название, дата публикации, текст, тема(новость привязывается к одной теме из списка)
+- Для редактирования поля дата использовать календарь jquery (http://jqueryui.com/)
 
-```
-common
-    config/              contains shared configurations
-    mail/                contains view files for e-mails
-    models/              contains model classes used in both backend and frontend
-console
-    config/              contains console configurations
-    controllers/         contains console controllers (commands)
-    migrations/          contains database migrations
-    models/              contains console-specific model classes
-    runtime/             contains files generated during runtime
-backend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains backend configurations
-    controllers/         contains Web controller classes
-    models/              contains backend-specific model classes
-    runtime/             contains files generated during runtime
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-frontend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains frontend configurations
-    controllers/         contains Web controller classes
-    models/              contains frontend-specific model classes
-    runtime/             contains files generated during runtime
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-    widgets/             contains frontend widgets
-vendor/                  contains dependent 3rd-party packages
-environments/            contains environment-based overrides
-tests                    contains various tests for the advanced application
-    codeception/         contains tests developed with Codeception PHP Testing Framework
-```
+
+Модуль вывода новостей
+
+Слева вывод всех годов для которых есть публикации, для каждого года вывод месяцев в которых были публикации в скобках указывается количество публикаций за этот месяц, в виде:
+
+2010
+  сентябрь (1)
+  июль (4)
+  июнь (7)
+  март (12)
+  февраль (3)
+
+2009
+
+При нажатии на год вывод всех новостей этого года, при нажатии на месяц вывод всех новостей этого месяца, соответственно.
+
+Под годами вывод всех тем, в скобках количество публикаций по теме:
+
+тема1 (2)
+тема2 (5)
+тема3 (7)
+
+При клике на название темы показываются все новости для которых выбрана эта тема
+
+
+Справа вывод всех новостей в виде:
+
+Название
+дата публикации, тема
+Краткий текст(полный текст обрезанный 256символов) ...
+                                             читать далее(ссылка на новость)
+
+При клике на "читать далее" показывается новость в виде:
+
+Название
+дата публикации, тема
+Текст новости полностью
+
+				все новости (ссылка на страницу с новостями)
+
+
+Вывод новостей по 5 на страницу, внизу страницы пейджер(вывод всех страниц, текущая страница подсвечивается)
+
+---
+
+Дизайн роли не играет, главное -- реализовать данную задачу.
+
+Срок выполнения вы указываете в ответе на письмо.
