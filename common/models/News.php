@@ -15,6 +15,8 @@ use Yii;
  */
 class News extends \yii\db\ActiveRecord
 {
+    public $ym;
+
     /**
      * @inheritdoc
      */
@@ -32,7 +34,8 @@ class News extends \yii\db\ActiveRecord
             [['publicated_at', 'title', 'text'], 'required'],
             [['publicated_at'], 'safe'],
             [['title', 'text'], 'string'],
-            [['subject_id'], 'integer']
+            [['subject_id'], 'integer'],
+            [['subject_id'], 'default', 'value'=>null],
         ];
     }
 
@@ -58,7 +61,12 @@ class News extends \yii\db\ActiveRecord
         $this->publicated_at = date('Y-m-d H:i:s', $this->publicated_at);
     }
 
-    public function beforeSave(){
-        $this->publicated_at = strtotime($this->publicated_at);
+    public function beforeSave($insert){
+        if (parent::beforeSave($insert)) {
+            $this->publicated_at = strtotime($this->publicated_at);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -3,13 +3,6 @@
 use yii\widgets\ListView;
 use yii\data\ActiveDataProvider;
 
-$dataProvider = new ActiveDataProvider([
-    'query' => \common\models\News::find(),
-    'pagination' => [
-        'pageSize' => 5,
-    ],
-]);
-
 $this->title = 'News';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -5,6 +5,7 @@ namespace backend\modules\news\controllers;
 use Yii;
 use common\models\News;
 use common\models\NewsSearch;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

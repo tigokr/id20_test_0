@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $model->title;
 <div class="col-lg-9">
     <h1><?= $model->title; ?> <small><?= \Yii::$app->formatter->asDatetime($model->publicated_at);?></small></h1>
 
-    <?php $model->subject?'<p>'.$model->subject->title.'</p>':''; ?>
+    <?= $model->subject?Html::a($model->subject->title, ['default/index', 'subject_id'=>$model->subject_id]).'</p>':''; ?>
 
     <div class="text">
         <?= HtmlPurifier::process($model->text); ?>

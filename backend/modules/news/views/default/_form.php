@@ -15,7 +15,9 @@ use yii\helpers\ArrayHelper;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'publicated_at')->widget(DateTimePicker::className()); ?>
+    <?= $form->field($model, 'publicated_at')->widget(DateTimePicker::className([
+        'value'=>!$model->isNewRecord?$model->publicated_at:date('Y-m-d H:i:s'),
+    ])); ?>
 
     <?= $form->field($model, 'title')->textarea(['rows' => 6]) ?>
 

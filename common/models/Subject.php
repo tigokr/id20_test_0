@@ -41,4 +41,8 @@ class Subject extends \yii\db\ActiveRecord
             'title' => 'Title',
         ];
     }
+
+    public function getNews(){
+        return $this->hasMany(News::className(), ['subject_id'=>'id']);
+    }
 }
